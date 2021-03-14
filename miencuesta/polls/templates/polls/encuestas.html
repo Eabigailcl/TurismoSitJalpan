@@ -1,0 +1,13 @@
+<title> Encuestas </title>
+
+<h1>Encuestas</h1>
+
+{% if  encuesta_list %}
+    <ul>
+    {% for Encuesta in encuesta_list %}
+		<li><a href="{% url 'index' Encuesta.sectores_id %}">{{ Encuesta.fecha}}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}

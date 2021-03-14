@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+
+{% block p %}
+<strong><p>Turismo Sierra Gorda</p></strong>
+{% endblock p %}
+
+{% block h1 %}
+<h1><i class="fas fa-angle-double-right"></i>{{list.Nombre}}<i class="fas fa-angle-double-left"></i></h1>
+{% endblock %}
+
+{% block bienvenido %}
+<h2>Bienvenido</h2>
+{%endblock bienvenido %}
+
+{% block preguntas %}
+<strong><h1>Contesta las siguientes preguntas:</h1></strong>
+<br>
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+{% for question  in latest_question_list %}
+
+<details open>
+
+   <summary>
+      <p>{{ question.question_text }}</p>
+   </summary>
+
+
+<form action="{% url 'guardar' question.id %}" method="post">
+{% csrf_token %}
+{% for choice in question.choice_set.all %}
+  <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}" />
+  <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br />
+{% endfor %}
+<br>
+<input class="fas fa-save" width="80" height="50" type="submit" value="Votar">
+<br>
+<br>
+</form>
+</details>
+{% endfor %}
+
+</ul>
+<br>
+<br>
+{% endblock %}
+
+{% block GuardarFecha %}
+
+<form action='GuardarFecha' method='GET'>
+<input type="button" onclick=" location.href='/' " value="Guardar Encuesta" name="boton" />
+
+</form>
+{% endblock %}

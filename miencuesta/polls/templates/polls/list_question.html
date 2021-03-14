@@ -1,0 +1,16 @@
+{% extends "base.html" %} 
+{% block title %} Preguntas {% endblock %} 
+
+{% block content %} 
+
+
+
+
+
+    <ul>
+    {% for question in ques %}
+
+    <li>{{ question.question_text }</li>
+    {% endfor %}
+    </ul>
+{% endblock %} 

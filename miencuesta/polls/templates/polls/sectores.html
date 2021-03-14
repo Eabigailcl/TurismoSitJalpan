@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block p %}
+<strong><p>Turismo Sierra Gorda</p></strong>
+{% endblock p %}
+
+{% block h1 %}
+<h1><i class="fas fa-home"></i>Sectores Turisticos</h1
+{% endblock %}
+
+{% block sectores %}
+   <ul>
+    {% for list  in lists %}
+		<li><a style="text-decoration:none" href="{% url 'detail_sectores' list.pk %}">{{ list }}</a><br> </li>
+    {% endfor %}
+    </ul>
+{% endblock %}

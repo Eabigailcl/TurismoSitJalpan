@@ -1,0 +1,31 @@
+{% block h1 %}
+<h1>{{list.Nombre}}</h1>
+{% endblock %}
+
+<h2>Encuestas</h2>
+
+<hr />
+<a href="/Graficos">Estadisticas</a>
+
+<p>
+  <a href="/">Inicio</a>
+</p>
+
+{% if latest_question_list %}
+    <ul>
+    {% for question in latest_question_list %}
+        <li>{{ question.question_text }}</li>
+    {% endfor %}
+
+    </ul>
+{% else %}
+    <p>No hay encuestas cargadas.</p>
+{% endif %}
+
+<h1>{{ question.question_text }}</h1>
+
+<ul>
+{% for choice in question.choice_set.all %}
+    <li>{{ choice.choice_text }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }}</li>
+{% endfor %}
+</ul>

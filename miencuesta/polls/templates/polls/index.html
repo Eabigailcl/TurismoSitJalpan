@@ -1,0 +1,15 @@
+<title> Aplicacion Encuesta </title>
+
+<h2> Bienvenido!!!! </h2>
+<p> Contesta las siguientes preguntas: </p>
+
+
+{% if latest_question_list %}
+    <ul>
+    {% for question in latest_question_list %}
+		<li><a href="{% url 'detail' question.id %}">{{ question.question_text }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No hay encuestas disponibles.</p>
+{% endif %}

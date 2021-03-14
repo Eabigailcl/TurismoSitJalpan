@@ -1,0 +1,13 @@
+<title> Encuestas </title>
+
+<h1>Encuestas Disponibles</h1>
+
+{% if list_id %}
+    <ul>
+    {% for Encuesta in list_id %}
+		<li><a href="{% url 'index' Encuesta.id %}">{{ Encuesta.fecha }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No hay sectores cargados.</p>
+{% endif %}
